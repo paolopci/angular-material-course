@@ -9,11 +9,12 @@ import {UntypedFormBuilder, Validators} from '@angular/forms';
 })
 export class CreateCourseStep1Component {
 
+  maxTextTitle:number=60;
   form = this.fb.group({
     title: ['', [
       Validators.required,
       Validators.minLength(5),
-      Validators.maxLength(60)
+      Validators.maxLength(this.maxTextTitle)
     ]],
     releasedAt: [new Date(), Validators.required],
     category: ['BEGINNER', Validators.required],

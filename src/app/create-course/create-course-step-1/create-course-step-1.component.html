@@ -4,8 +4,11 @@
     <mat-label>Course title</mat-label>
     <input matInput placeholder="Course title" formControlName="title" #title>
    <mat-hint align="end">
-     {{title.value.length}} / 60
+     {{title.value.length}} / {{ maxTextTitle }}
    </mat-hint>
+    <mat-error>
+      A minimum length of 5 characters is required.
+    </mat-error>
 
   </mat-form-field>
 
