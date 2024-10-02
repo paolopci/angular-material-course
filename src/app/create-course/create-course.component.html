@@ -2,7 +2,21 @@
 
   <h2 class="title">Create New Course</h2>
 
+  <mat-horizontal-stepper class="mat-elevation-z5" labelPosition="bottom" [linear]="true">
+
+    <mat-step>
+      <ng-template matStepLabel>Course Details</ng-template>
+      <create-course-step-1></create-course-step-1>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Course Lessons</ng-template>
+      <create-course-step-2></create-course-step-2>
+    </mat-step>
+
+
+
+
+  </mat-horizontal-stepper>
+
 
 </div>
-
-
