@@ -6,9 +6,11 @@
    <mat-hint align="end">
      {{title.value.length}} / {{ maxTextTitle }}
    </mat-hint>
+    @if(courseTitle.errors?.minlength){
     <mat-error>
       A minimum length of 5 characters is required.
     </mat-error>
+    }
 
   </mat-form-field>
 

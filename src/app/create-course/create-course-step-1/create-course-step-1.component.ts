@@ -24,7 +24,6 @@ export class CreateCourseStep1Component {
   });
 
   constructor(private fb: UntypedFormBuilder) {
-
   }
 
   get courseTitle() {
