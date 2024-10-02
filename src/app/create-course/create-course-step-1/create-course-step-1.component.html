@@ -3,9 +3,9 @@
   <mat-form-field floatLabel="always">
     <mat-label>Course title</mat-label>
     <input matInput placeholder="Course title" formControlName="title" #title>
-   <mat-hint align="end">
-     {{title.value.length}} / {{ maxTextTitle }}
-   </mat-hint>
+    <mat-hint align="end">
+      {{title.value.length}} / {{ maxTextTitle }}
+    </mat-hint>
     @if(courseTitle.errors?.minlength){
     <mat-error>
       A minimum length of 5 characters is required.
@@ -13,6 +13,11 @@
     }
 
   </mat-form-field>
+
+  <mat-radio-group class="course-type" formControlName="courseType">
+    <mat-radio-button value="free">Free</mat-radio-button>
+    <mat-radio-button value="premium">Premium</mat-radio-button>
+  </mat-radio-group>
 
 
 </div>
