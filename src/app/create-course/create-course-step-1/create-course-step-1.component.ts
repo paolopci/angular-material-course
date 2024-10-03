@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 
 
 @Component({
@@ -17,18 +18,28 @@ export class CreateCourseStep1Component {
       Validators.minLength(5),
       Validators.maxLength(this.maxTextTitle)
     ]],
-    releasedAt: [new Date(1990, 0, 1), Validators.required],
+    releasedAt: [new Date(1990, 1, 10), Validators.required],
     category: ['BEGINNER', Validators.required],
     courseType: ['premium', Validators.required],
     downloadsAllowed: [false, Validators.requiredTrue],
     longDescription: ['', [Validators.required, Validators.minLength(3)]]
   });
 
-  constructor(private fb: UntypedFormBuilder) {
+  constructor(private fb: FormBuilder) {
   }
 
   get courseTitle() {
     return this.form.controls['title'];
+  }
+
+  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+
+    const date = cellDate.getDate();// getDate ritorna il gg del mese in local time
+
+    if (view == 'month') {
+      return (date == 1) ? "highlight-date" : "";
+    }
+    return "";
   }
 
 }

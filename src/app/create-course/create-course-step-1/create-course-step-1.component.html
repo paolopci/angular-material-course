@@ -50,11 +50,11 @@
   <!-- campo Date   -->
   <mat-form-field appearance="outline">
 
-    <input matInput formControlName="releaseAt" placeholder="Release date" [matDatepicker]="releaseAtPicker">
+    <input matInput formControlName="releasedAt" placeholder="Release date" [matDatepicker]="releasedAtPicker">
 
-    <mat-datepicker-toggle matSuffix [for]="releaseAtPicker"></mat-datepicker-toggle>
+    <mat-datepicker-toggle matSuffix [for]="releasedAtPicker"></mat-datepicker-toggle>
 
-    <mat-datepicker #releaseAtPicker>
+    <mat-datepicker #releasedAtPicker [dateClass]="dateClass">
 
     </mat-datepicker>
   </mat-form-field>
