@@ -60,8 +60,13 @@
   </mat-form-field>
 
   <!--  CheckBok -->
-  <mat-checkbox color="primary" formControlName="downloadsAllowed" [disabled]="true">
+  <mat-checkbox color="primary" formControlName="downloadsAllowed">
     Downloads allowed?
   </mat-checkbox>
+
+  <mat-form-field formControlName="longDescription" appearance="outline">
+
+    <textarea matInput placeholder="Description"></textarea>
+  </mat-form-field>
 
 </div>
