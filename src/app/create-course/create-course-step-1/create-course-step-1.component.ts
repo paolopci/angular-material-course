@@ -37,7 +37,7 @@ export class CreateCourseStep1Component {
     const date = cellDate.getDate();// getDate ritorna il gg del mese in local time
 
     if (view == 'month') {
-      return (date == 1) ? "highlight-date" : "";
+      return (date == 1) ? ["highlight-date"] : [""];
     }
     return "";
   }
