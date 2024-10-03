@@ -1,22 +1,23 @@
-import {Component} from '@angular/core';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { Component } from '@angular/core';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
   selector: "create-course-step-1",
-  templateUrl:"create-course-step-1.component.html",
+  templateUrl: "create-course-step-1.component.html",
   styleUrls: ["create-course-step-1.component.scss"]
 })
 export class CreateCourseStep1Component {
 
-  maxTextTitle:number=60;
+  maxTextTitle: number = 60;
+
   form = this.fb.group({
     title: ['', [
       Validators.required,
       Validators.minLength(5),
       Validators.maxLength(this.maxTextTitle)
     ]],
-    releasedAt: [new Date(), Validators.required],
+    releasedAt: [new Date(1990, 0, 1), Validators.required],
     category: ['BEGINNER', Validators.required],
     courseType: ['premium', Validators.required],
     downloadsAllowed: [false, Validators.requiredTrue],

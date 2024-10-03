@@ -19,6 +19,10 @@
     <mat-radio-button value="premium">Premium</mat-radio-button>
   </mat-radio-group>
 
+
+
+  <!--       component Select  -->
+
   <mat-form-field appearance="fill">
     <mat-label>Select Category</mat-label>
     <mat-select formControlName="category" placeholder="Select Category">
@@ -41,6 +45,18 @@
       <mat-option value="INTERMEDIATE">Intermediate</mat-option>
       <mat-option value="ADVANCED">Advanced</mat-option>
     </mat-select>
+  </mat-form-field>
+
+  <!-- campo Date   -->
+  <mat-form-field appearance="outline">
+
+    <input matInput formControlName="releaseAt" placeholder="Release date" [matDatepicker]="releaseAtPicker">
+
+    <mat-datepicker-toggle matSuffix [for]="releaseAtPicker"></mat-datepicker-toggle>
+
+    <mat-datepicker #releaseAtPicker>
+
+    </mat-datepicker>
   </mat-form-field>
 
 
