@@ -19,8 +19,6 @@
     <mat-radio-button value="premium">Premium</mat-radio-button>
   </mat-radio-group>
 
-
-
   <!--       component Select  -->
 
   <mat-form-field appearance="fill">
@@ -47,9 +45,6 @@
     </mat-select>
   </mat-form-field>
 
-
-
-
   <!-- campo Date   -->
   <mat-form-field appearance="outline">
 
@@ -64,5 +59,9 @@
     </mat-datepicker>
   </mat-form-field>
 
+  <!--  CheckBok -->
+  <mat-checkbox color="primary" formControlName="downloadsAllowed" [disabled]="true">
+    Downloads allowed?
+  </mat-checkbox>
 
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 
@@ -8,7 +8,7 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
   templateUrl: "create-course-step-1.component.html",
   styleUrls: ["create-course-step-1.component.scss"]
 })
-export class CreateCourseStep1Component {
+export class CreateCourseStep1Component implements OnInit {
 
   maxTextTitle: number = 60;
 
@@ -22,10 +22,16 @@ export class CreateCourseStep1Component {
     category: ['BEGINNER', Validators.required],
     courseType: ['premium', Validators.required],
     downloadsAllowed: [false, Validators.requiredTrue],
+    //downloadsAllowed: [{ value: false, disabled: true }, Validators.requiredTrue],
     longDescription: ['', [Validators.required, Validators.minLength(3)]]
   });
 
   constructor(private fb: FormBuilder) {
+  }
+
+  ngOnInit(): void {
+    // this.form.controls['downloadsAllowed']?.disable();
+    this.form.get('downloadsAllowed')?.disable();
   }
 
   get courseTitle() {
@@ -37,7 +43,7 @@ export class CreateCourseStep1Component {
     const date = cellDate.getDate();// getDate ritorna il gg del mese in local time
 
     if (view == 'month') {
-      return (date == 1) ? ["highlight-date"] : [""];
+      return (date == 1) ? "highlight-date" : "";
     }
     return "";
   }
