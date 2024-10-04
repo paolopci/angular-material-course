@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, viewChildren } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { Course } from "../model/course";
 import { CoursesService } from "../services/courses.service";
-import { debounceTime, distinctUntilChanged, startWith, tap, delay, catchError } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, startWith, tap, delay, catchError, finalize } from 'rxjs/operators';
 import { merge, fromEvent, throwError } from "rxjs";
 import { Lesson } from '../model/lesson';
 
@@ -20,6 +20,10 @@ export class CourseComponent implements OnInit, AfterViewInit {
   course: Course;
 
   lessons: Lesson[] = [];
+  loading: boolean = false;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(private route: ActivatedRoute,
     private coursesService: CoursesService) {
 
@@ -33,18 +37,30 @@ export class CourseComponent implements OnInit, AfterViewInit {
   }
 
   loadLessonsPage() {
-    this.coursesService.findLessons(this.course.id, 'asc', 0, 3)
+    this.loading = true;
+    this.coursesService.findLessons(
+      this.course.id,
+      'asc',
+      this.paginator?.pageIndex ?? 0,
+      this.paginator?.pageSize ?? 3)
       .pipe(
         tap(lessons => this.lessons = lessons),
         catchError(err => {// se ho un errore avviso l'utente
           console.log('Error loading lessons', err);
           alert('Error loading lessons.');
           return throwError(err);// e creo un altro obervable che emette la notifica dell'err
-        })
+        }),
+        finalize(() => this.loading = false)
       ).subscribe();
   }
 
   ngAfterViewInit() {
+
+    this.paginator.page
+      .pipe(
+        tap(() => this.loadLessonsPage())
+      )
+      .subscribe();
 
 
   }
