@@ -27,6 +27,13 @@
       <td class="duration-cell" mat-cell *matCellDef="let lesson">{{lesson.duration}}</td>
     </ng-container>
 
+    <!-- Multi Template Data Rows -->
+    <ng-container matColumnDef="expandedDetail">
+      <td class="description-cell" mat-cell *matCellDef="let lesson" colspan="3">
+        {{lesson.longDescription}}
+      </td>
+    </ng-container>
+
     <!-- Sono necessarie per visualizzare l'header delle colonne e le colonne -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns" class="matHeader"></tr>
     <tr mat-row *matRowDef="let lesson;columns:displayedColumns"></tr>
