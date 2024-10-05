@@ -10,7 +10,7 @@
   </div>
   }
   <table mat-table class="lessons-table mat-elevation-z8" matSort matSortDisableClear matSortActive="seqNo"
-    matSortDirection="asc" [dataSource]="lessons">
+    matSortDirection="asc" [dataSource]="lessons" multiTemplateDataRows>
 
     <ng-container matColumnDef="seqNo">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
@@ -30,6 +30,7 @@
     <!-- Sono necessarie per visualizzare l'header delle colonne e le colonne -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns" class="matHeader"></tr>
     <tr mat-row *matRowDef="let lesson;columns:displayedColumns"></tr>
+    <tr mat-row *matRowDef="let lesson;columns:['expandedDetail']"></tr>
 
   </table>
 
