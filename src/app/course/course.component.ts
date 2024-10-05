@@ -8,6 +8,7 @@ import { CoursesService } from "../services/courses.service";
 import { debounceTime, distinctUntilChanged, startWith, tap, delay, catchError, finalize } from 'rxjs/operators';
 import { merge, fromEvent, throwError } from "rxjs";
 import { Lesson } from '../model/lesson';
+import { SelectionModel } from '@angular/cdk/collections';
 
 
 @Component({
@@ -25,12 +26,19 @@ export class CourseComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  selection = new SelectionModel<Lesson>(true, []);
+
   constructor(private route: ActivatedRoute,
     private coursesService: CoursesService) {
 
   }
   //! l'array stabilisce l'ordine delle colonne della mat-Table
   displayedColumns = ['seqNo', 'description', 'duration'];
+  //! voglio che di default la modalità multilevel sia OFF e attivabile x 
+  //! una riga alla volta
+  expandedLesson: Lesson = null;
+
+
   ngOnInit() {
 
     this.course = this.route.snapshot.data["course"];
@@ -54,6 +62,14 @@ export class CourseComponent implements OnInit, AfterViewInit {
         }),
         finalize(() => this.loading = false)
       ).subscribe();
+  }
+
+  onToggleLesson(lesson: Lesson) {
+    if (lesson == this.expandedLesson) {
+      this.expandedLesson = null;
+    } else {
+      this.expandedLesson = lesson;
+    }
   }
 
   ngAfterViewInit() {
