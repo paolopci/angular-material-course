@@ -76,3 +76,9 @@ mat-paginator {
 .matHeader {
   background-color: yellow;
 }
+
+.scrolling-container {
+  overflow: auto;
+  max-height: 250px;
+  max-width: 200px;
+}
