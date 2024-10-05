@@ -1,4 +1,3 @@
-
 .course-details-form {
   display: flex;
   flex-direction: column;
@@ -9,3 +8,10 @@
   margin-bottom: 15px;
 }
 
+mat-radio-button {
+  margin-right: 5px;
+}
+
+.highlight-date {
+  background: red;
+}

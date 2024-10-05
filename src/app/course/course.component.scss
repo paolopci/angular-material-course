@@ -1,8 +1,7 @@
-
 .course {
-    text-align: center;
-    width: 390px;
-    margin: 40px auto;
+  text-align: center;
+  width: 490px;
+  margin: 40px auto;
 }
 
 .course-thumbnail {
@@ -14,6 +13,10 @@
 .description-cell {
   text-align: left;
   margin: 10px auto;
+}
+
+.collapsed-detail {
+  display: none;
 }
 
 .duration-cell {
@@ -45,7 +48,7 @@
 }
 
 mat-paginator {
-  width: 400px;
+  width: 490px;
   padding-bottom: 10px;
   margin-bottom: 100px;
 }
@@ -62,10 +65,20 @@ mat-paginator {
 }
 
 .mat-column-description {
-  padding-left:20px;
+  padding-left: 20px;
   text-align: left;
 }
 
 .mat-column-duration {
   font-style: italic;
+}
+
+.matHeader {
+  background-color: yellow;
+}
+
+.scrolling-container {
+  overflow: auto;
+  max-height: 250px;
+  max-width: 200px;
 }
