@@ -36,8 +36,9 @@
 
     <!-- Sono necessarie per visualizzare l'header delle colonne e le colonne -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns" class="matHeader"></tr>
-    <tr mat-row *matRowDef="let lesson;columns:displayedColumns"></tr>
-    <tr mat-row *matRowDef="let lesson;columns:['expandedDetail']"></tr>
+    <tr mat-row (click)="onToggleLesson(lesson)" *matRowDef="let lesson;columns:displayedColumns"></tr>
+    <tr mat-row *matRowDef="let lesson;columns:['expandedDetail']" [class.collapsed-detail]="lesson !=expandedLesson">
+    </tr>
 
   </table>
 
