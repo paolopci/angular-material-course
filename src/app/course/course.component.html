@@ -12,6 +12,23 @@
   <table mat-table class="lessons-table mat-elevation-z8" matSort matSortDisableClear matSortActive="seqNo"
     matSortDirection="asc" [dataSource]="lessons" multiTemplateDataRows>
 
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox [checked]="selection.hasValue() && isAllSelected()" (change)="toggleAll()"
+          [indeterminate]="selection.hasValue() && isAllSelected()">
+
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let lesson" (click)="$event.stopPropagation()">
+        <mat-checkbox (change)="onLessonToggled(lesson)" [checked]="selection.isSelected(lesson)">
+
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+
+
+
     <ng-container matColumnDef="seqNo">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
       <td mat-cell *matCellDef="let lesson">{{lesson.seqNo}}</td>
@@ -29,7 +46,7 @@
 
     <!-- Multi Template Data Rows -->
     <ng-container matColumnDef="expandedDetail">
-      <td class="description-cell" mat-cell *matCellDef="let lesson" colspan="3">
+      <td class="description-cell" mat-cell *matCellDef="let lesson" colspan="4">
         {{lesson.longDescription}}
       </td>
     </ng-container>

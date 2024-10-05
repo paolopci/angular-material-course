@@ -33,7 +33,7 @@ export class CourseComponent implements OnInit, AfterViewInit {
 
   }
   //! l'array stabilisce l'ordine delle colonne della mat-Table
-  displayedColumns = ['seqNo', 'description', 'duration'];
+  displayedColumns = ['select', 'seqNo', 'description', 'duration'];
   //! voglio che di default la modalità multilevel sia OFF e attivabile x 
   //! una riga alla volta
   expandedLesson: Lesson = null;
@@ -80,8 +80,22 @@ export class CourseComponent implements OnInit, AfterViewInit {
         tap(() => this.loadLessonsPage())
       )
       .subscribe();
-
-
   }
 
+  onLessonToggled(lesson: Lesson) {
+    this.selection.toggle(lesson);
+    console.log(this.selection.selected);
+  }
+
+  isAllSelected() {
+    return this.selection.selected?.length === this.lessons?.length;
+  }
+
+  toggleAll() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+    } else {
+      this.selection.select(...this.lessons);
+    }
+  }
 }
