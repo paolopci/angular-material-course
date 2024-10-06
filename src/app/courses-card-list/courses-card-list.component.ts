@@ -1,6 +1,7 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {Course} from "../model/course";
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Course } from "../model/course";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { openEditCourseDialog } from '../course-dialog/course-dialog.component';
 
 @Component({
     selector: 'courses-card-list',
@@ -9,8 +10,11 @@ import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 })
 export class CoursesCardListComponent implements OnInit {
 
+
     @Input()
     courses: Course[];
+
+    editDialog: MatDialog = null;
 
     constructor() {
     }
@@ -19,8 +23,8 @@ export class CoursesCardListComponent implements OnInit {
 
     }
 
-    editCourse(course:Course) {
-
+    editCourse(course: Course) {
+        openEditCourseDialog(this.editDialog, course);
 
     }
 
