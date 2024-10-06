@@ -28,6 +28,22 @@ export class CourseDialogComponent implements OnInit {
     close() { }
 
     save() { }
+}
+
+export function openEditCourseDialog(dialog: MatDialog, course: Course) { //! particolare Service x le Dialog view
+
+    // le finestre di Dialog hanno bisogno di una configurazione
+    const config = new MatDialogConfig();
+
+    config.disableClose = true; //! x evitare la chiusura accidentale se clicco su x
+    config.autoFocus = true;
+
+    config.data = {
+        ...course
+    };
+
+
+    const dialogRef = dialog.open(CourseDialogComponent, config);
 
 }
 
