@@ -22,6 +22,8 @@ export class CourseDialogComponent implements OnInit {
     constructor(private fb: FormBuilder,
         @Inject(MAT_DIALOG_DATA) private course: Course,
         private dialogRef: MatDialogRef<CourseDialogComponent>) {
+
+        this.description = course.description;
     }
 
     ngOnInit() {
