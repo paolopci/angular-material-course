@@ -1,3 +1,6 @@
+@import "../../mixins";
+
+@include drag-drop();
 
 .drag-drop-container {
   font-family: "Roboto";
@@ -10,13 +13,12 @@
   width: 500px;
   max-width: 100%;
   border: solid 1px #ccc;
-  min-height: 60px;
+  min-height: 100px;
   display: block;
   background: white;
   border-radius: 4px;
   overflow: hidden;
 }
-
 
 .lesson {
   padding: 20px 10px;
@@ -35,16 +37,3 @@
 .done {
   margin-left: 30px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

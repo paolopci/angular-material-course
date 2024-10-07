@@ -1,16 +1,47 @@
-
 <div class="drag-drop-container">
 
   <div class="pending">
 
     <h3>Lessons To Watch:</h3>
 
+    <div cdkDropList class="lessons-list drag-drop-list" #lessonList="cdkDropList" [cdkDropListData]="lessons"
+      [cdkDropListConnectedTo]="doneList" (cdkDropListDropped)="dropMultiList($event)">
+
+      @for(lesson of lessons; track lesson){
+
+      <div class="lesson drag-drop-item" cdkDrag>
+
+        <div class="drop-placeholder" *cdkDragPlaceholder></div>
+
+        {{lesson.description}}
+
+      </div>
+      }
+
+    </div>
+
   </div>
 
-  <!-- div class="done">
+  <div class="done">
 
     <h3>Done:</h3>
 
-  </div-->
+    <div cdkDropList class="lessons-list drag-drop-list" #doneList="cdkDropList" [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="lessonList" (cdkDropListDropped)="dropMultiList($event)">
+
+      @for(item of done; track item ){
+
+      <div class="lesson drag-drop-item" cdkDrag>
+
+        <div class="drop-placeholder" *cdkDragPlaceholder></div>
+
+        {{item.description}}
+
+      </div>
+      }
+
+    </div>
+
+  </div>
 
 </div>
