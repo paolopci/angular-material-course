@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import {Lesson} from '../model/lesson';
+import { Component } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Lesson } from '../model/lesson';
 
 
 @Component({
@@ -89,5 +89,11 @@ export class DragDropComponent {
       courseId: 11
     }
   ];
+
+
+  drop(event: CdkDragDrop<Lesson[]>) {
+
+    console.log('previous Index', event.previousIndex);
+  }
 
 }

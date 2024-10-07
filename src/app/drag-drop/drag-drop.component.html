@@ -1,9 +1,16 @@
-
 <div class="drag-drop-container">
 
   <div class="pending">
 
     <h3>Lessons To Watch:</h3>
+
+    <div cdkDropList class="lessons-list" (cdkDropListDropped)="drop($event)">
+      @for(lesson of lessons; track lesson.id){
+      <div class="lesson" cdkDrag>
+        {{lesson.description}}
+      </div>
+      }
+    </div>
 
   </div>
 
