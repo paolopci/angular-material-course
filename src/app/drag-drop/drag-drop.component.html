@@ -21,10 +21,25 @@
 
   </div>
 
-  <!-- div class="done">
+  <div class="done">
 
     <h3>Done:</h3>
 
-  </div-->
+    <div cdkDropList class="lessons-list drag-drop-list" (cdkDropListDropped)="drop($event)">
+
+      @for(lesson of done; track lesson.id){
+
+      <div class="lesson drag-drop-item" cdkDrag>
+
+        <div class="drop-placeholder" *cdkDragPlaceholder></div>
+
+        {{lesson.description}}
+
+      </div>
+      }
+
+    </div>
+
+  </div>
 
 </div>

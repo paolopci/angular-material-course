@@ -90,6 +90,8 @@ export class DragDropComponent {
     }
   ];
 
+  done = [];
+
 
   drop(event: CdkDragDrop<Lesson[]>) {
 
