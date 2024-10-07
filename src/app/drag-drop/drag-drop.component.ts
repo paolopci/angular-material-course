@@ -92,7 +92,7 @@ export class DragDropComponent {
 
   done = [];
 
-
+  //! drag and drop di item sullo stesso container
   drop(event: CdkDragDrop<Lesson[]>) {
 
     const elemento = event.item.element.nativeElement.textContent;
@@ -104,5 +104,24 @@ export class DragDropComponent {
     //! avvenga devi fare una copia.
     moveItemInArray(this.lessons, event.previousIndex, event.currentIndex);
   }
+
+  //! drag and drop item da un container a un altro.
+  dropMultiList(event: CdkDragDrop<Lesson[]>) {
+
+    if (event.previousContainer === event.container) {
+      //! questo metodo modifica l'array delle lessons se non vuoi che
+      //! avvenga devi fare una copia.
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+  }
+
+
 
 }
