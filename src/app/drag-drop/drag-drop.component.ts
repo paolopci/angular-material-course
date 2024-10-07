@@ -95,12 +95,12 @@ export class DragDropComponent {
 
     const elemento = event.item.element.nativeElement.textContent;
     //console.log(elemento);
-    console.log(`previousIndex: ${elemento} from ${event.previousIndex} to currentIndex: ${event.currentIndex}`);
+    console.log(`previousIndex: '${elemento}' from ${event.previousIndex} to currentIndex: ${event.currentIndex}`);
     // console.log(`currentIndex: ${event.currentIndex}`);
 
     //! questo metodo modifica l'array delle lessons se non vuoi che
     //! avvenga devi fare una copia.
-    // moveItemInArray(this.lessons, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.lessons, event.previousIndex, event.currentIndex);
   }
 
 }
