@@ -19,7 +19,9 @@
         </button>
         {{node.name}}
       </div>
-      <ng-container matTreeNodeOutlet></ng-container>
+      <div class="nested-node">
+        <ng-container matTreeNodeOutlet></ng-container>
+      </div>
     </mat-nested-tree-node>
   </mat-tree>
 
