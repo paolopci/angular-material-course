@@ -97,6 +97,7 @@ export class TreeDemoComponent implements OnInit {
 
   ngOnInit() {
     this.nestedDataSource.data = TREE_DATA;
+    this.flatDataSource.data = TREE_DATA;
 
   }
 

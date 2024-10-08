@@ -35,17 +35,19 @@
   <mat-tree class="mat-elevation-z4" [dataSource]="flatDataSource" [treeControl]="flatTreeControl">
 
     <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-      {{node.name}}
+      <div class="leaf-node">
+        {{node.name}}
+      </div>
     </mat-tree-node>
 
     <mat-tree-node *matTreeNodeDef="let node; when hasFlatChild" matTreeNodePadding>
 
       <button mat-icon-button matTreeNodeToggle>
         <mat-icon>
-          {{flatTreeControl.isExpanded(node) ? "expand_more":"chevron_right"}}
+          {{flatTreeControl.isExpanded(node) ? "expand_more" : "chevron_right"}}
         </mat-icon>
       </button>
-
+      {{node.name}}
     </mat-tree-node>
 
   </mat-tree>
