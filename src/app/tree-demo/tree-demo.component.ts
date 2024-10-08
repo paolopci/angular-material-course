@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeNestedDataSource} from '@angular/material/tree';
-import {FlatTreeControl, NestedTreeControl} from '@angular/cdk/tree';
+import { Component, OnInit } from '@angular/core';
+import { MatTreeFlatDataSource, MatTreeFlattener, MatTreeNestedDataSource } from '@angular/material/tree';
+import { FlatTreeControl, NestedTreeControl } from '@angular/cdk/tree';
+import { courseResolver } from '../services/course.resolver';
 
+//! questo modello del il mio nodo
 interface CourseNode {
   name: string;
   children?: CourseNode[];
@@ -58,9 +60,13 @@ const TREE_DATA: CourseNode[] = [
 })
 export class TreeDemoComponent implements OnInit {
 
+  nestedDataSource = new MatTreeNestedDataSource<CourseNode>();
+
+  //! in questo modo il controllo sa come estrarre i figli di un dato nodo.
+  nestedTreeControl = new NestedTreeControl<CourseNode>(node => node.children);
 
   ngOnInit() {
-
+    this.nestedDataSource.data = TREE_DATA;
 
   }
 
