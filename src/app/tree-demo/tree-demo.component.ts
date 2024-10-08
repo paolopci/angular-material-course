@@ -70,6 +70,12 @@ export class TreeDemoComponent implements OnInit {
 
   }
 
+  hasNestedChild(index: number, node: CourseNode) {
+
+    //! se maggiore di 0 allora è un nodo espandibile.
+    return node?.children?.length > 0;
+  }
+
 }
 
 
