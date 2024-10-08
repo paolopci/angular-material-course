@@ -19,7 +19,7 @@
         </button>
         {{node.name}}
       </div>
-      <div class="nested-node">
+      <div class="nested-node" [class.example-tree-invisible]="!nestedTreeControl.isExpanded(node)">
         <ng-container matTreeNodeOutlet></ng-container>
       </div>
     </mat-nested-tree-node>
