@@ -46,6 +46,8 @@ export function openEditCourseDialog(dialog: MatDialog, course: Course) { //! pa
 
     config.disableClose = true; //! x evitare la chiusura accidentale se clicco su x
     config.autoFocus = true;
+    config.panelClass = 'modal-panel';
+    config.backdropClass = 'backdrop-modal-panel';
 
     config.data = {
         ...course
