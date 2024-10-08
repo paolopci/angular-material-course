@@ -60,11 +60,12 @@ const TREE_DATA: CourseNode[] = [
 })
 export class TreeDemoComponent implements OnInit {
 
+  // ------- Nested Tree ------------
   nestedDataSource = new MatTreeNestedDataSource<CourseNode>();
-
   //! in questo modo il controllo sa come estrarre i figli di un dato nodo.
   nestedTreeControl = new NestedTreeControl<CourseNode>(node => node.children);
 
+  // ------- Flat Tree
   ngOnInit() {
     this.nestedDataSource.data = TREE_DATA;
 
