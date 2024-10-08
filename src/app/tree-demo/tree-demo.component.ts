@@ -74,6 +74,27 @@ export class TreeDemoComponent implements OnInit {
   nestedTreeControl = new NestedTreeControl<CourseNode>(node => node.children);
 
   // ------- Flat Tree
+  flatTreeControl = new FlatTreeControl<CourseFlatNode>(
+    node => node.level,
+    node => node.expandable
+  );
+
+  treeFlattener = new MatTreeFlattener((node: CourseNode, level: number) => {
+    return {
+      name: node.name,
+      expandable: node.children?.length > 0,
+      level
+    }
+  },
+    node => node.level,
+    node => node.expandable,
+    node => node.children
+  );
+
+  flatDataSource = new MatTreeFlatDataSource(this.flatTreeControl, this.treeFlattener);
+
+
+
   ngOnInit() {
     this.nestedDataSource.data = TREE_DATA;
 
