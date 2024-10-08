@@ -3,6 +3,8 @@
 
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
+// @include mat.core();
+
 @import "./mixins";
 
 @include responsive-dialogs();
