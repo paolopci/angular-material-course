@@ -3,11 +3,19 @@ import { MatTreeFlatDataSource, MatTreeFlattener, MatTreeNestedDataSource } from
 import { FlatTreeControl, NestedTreeControl } from '@angular/cdk/tree';
 import { courseResolver } from '../services/course.resolver';
 
-//! questo modello del il mio nodo
+//! questo modello del il mio nodo Nested Tree
 interface CourseNode {
   name: string;
   children?: CourseNode[];
 }
+
+//! model for Flat Tree
+interface CourseFlatNode {
+  name: string;
+  expandable: boolean;//! true i nodi nidificati , false i nodi foglia
+  level: number; //! stabilisce il rientro di cui abbiamo bisogno
+}
+
 
 const TREE_DATA: CourseNode[] = [
   {
