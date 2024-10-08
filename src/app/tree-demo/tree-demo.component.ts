@@ -106,7 +106,9 @@ export class TreeDemoComponent implements OnInit {
     return node?.children?.length > 0;
   }
 
-  hasFlatChild() { }
+  hasFlatChild(index: number, node: CourseFlatNode) {
+    return node.expandable;
+  }
 
 }
 
